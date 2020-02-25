@@ -1,0 +1,8 @@
+export enum Statuscodes {
+  USER_LOCKED = 423,
+  UNAUTHORIZED = 401,
+  WRONG_PASSWORD = 403,
+  NO_USER_FOUND = 410,
+  TOKEN_DECLINED = 402
+
+}
