@@ -2,10 +2,10 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {Statuscodes} from '../_helpers/statuscodes.enum';
-import {throwError} from 'rxjs';
-import {catchError, map} from 'rxjs/operators';
+import {throwError} from "rxjs";
+import {catchError, map} from "rxjs/operators";
 import {environment} from '../../environments/environment';
-import {fromPromise} from 'rxjs/internal-compatibility';
+import {fromPromise} from "rxjs/internal-compatibility";
 
 
 @Injectable({
@@ -83,7 +83,7 @@ export class ApidataService {
     const headers = this.httpApiHeader();
     const apiURL = `${this.apiRoot}${ressource}`;
 
-    return this.http.get(apiURL, {headers}).pipe(
+    return this.http.get(apiURL, {headers: headers}).pipe(
       catchError(error => {
         return this.handleError(error, this.router);
       })
@@ -100,7 +100,7 @@ export class ApidataService {
     const headers = this.httpApiHeader();
     const apiURL = `${this.apiRoot}${ressource}`;
 
-    return this.http.post(apiURL, httpParams, {headers}).pipe(
+    return this.http.post(apiURL, httpParams, {headers: headers}).pipe(
       catchError(error => {
         return this.handleError(error, this.router);
       })
@@ -117,7 +117,7 @@ export class ApidataService {
     const headers = this.httpApiHeader();
     const apiURL = `${this.apiRoot}${ressource}`;
 
-    return this.http.put(apiURL, httpParams, {headers}).pipe(
+    return this.http.put(apiURL, httpParams, {headers: headers}).pipe(
       catchError(error => {
         return this.handleError(error, this.router);
       })
@@ -133,7 +133,7 @@ export class ApidataService {
     const apiURL = `${this.apiRoot}${ressource}`;
 
 
-    return this.http.delete(apiURL, {headers}).pipe(
+    return this.http.delete(apiURL, {headers: headers}).pipe(
       catchError(error => {
         return this.handleError(error, this.router);
       })
@@ -154,9 +154,9 @@ export class ApidataService {
     // Subscribe to begin listening for async result
     data.subscribe({
       next(response) {
-        if (response.data) {
-          console.log(response.data);
-          return response.data;
+        if (response['data']) {
+          console.log(response['data']);
+          return response['data'];
         } else {
           console.log(response);
           return [];
@@ -178,8 +178,8 @@ export class ApidataService {
 
     this.doGet(ressource).subscribe(
       response => {
-        if (response.data) {
-          return response.data;
+        if (response['data']) {
+          return response['data'];
         } else {
           console.log(response);
           return [];
@@ -192,11 +192,11 @@ export class ApidataService {
 
   getEventsJSON() {
     const ressource = this.apiRoot + `/events`;
-    // return this.http.get('http://api.trombongos.ch' + ressource).pipe(map(
+    //return this.http.get('http://api.trombongos.ch' + ressource).pipe(map(
     return this.http.get(ressource).pipe(map(
       response => {
-        if (response.data) {
-          return response.data;
+        if (response['data']) {
+          return response['data'];
         } else {
           console.log('NoDataReceivedError');
           console.log(response);
@@ -205,13 +205,18 @@ export class ApidataService {
       },
       err =>
         console.log(err)
-    ));
+    ))
 
   }
 
   getEventList() {
+
     const ressource = `/events`;
+
+    environment
+
     return this.http.get(environment.apiUrl + ressource);
+
   }
 
 

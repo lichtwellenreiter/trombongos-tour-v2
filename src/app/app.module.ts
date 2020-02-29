@@ -1,13 +1,16 @@
-import {BrowserModule} from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import {LOCALE_ID, NgModule} from '@angular/core';
 
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-import {ServiceWorkerModule} from '@angular/service-worker';
-import {environment} from '../environments/environment';
-import {ApidataService} from './_services/apidata.service';
-import {HttpClientModule} from '@angular/common/http';
-import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import {ApidataService} from "./_services/apidata.service";
+import {HttpClientModule} from "@angular/common/http";
+import localeDe from '@angular/common/locales/de';
+import {registerLocaleData} from "@angular/common";
+
+registerLocaleData(localeDe);
 
 @NgModule({
   declarations: [
@@ -16,9 +19,8 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule,
-    HttpClientModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    HttpClientModule
   ],
   providers: [
     ApidataService,
@@ -26,5 +28,4 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }
