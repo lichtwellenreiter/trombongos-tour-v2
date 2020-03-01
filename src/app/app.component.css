@@ -1,15 +1,18 @@
+
 .root-container {
   padding-top: 70px;
   padding-bottom: 70px;
   font-family: 'Oswald', sans-serif !important;
 }
 
-* {
-  border-radius: 0 !important;
+.navbar {
+  border-bottom: 1px solid #fefefe;
 }
 
-.navbar {
-  border-bottom: 1px solid #6C757D;
+
+.bg-gradient {
+  background: rgb(240, 47, 194);
+  background: linear-gradient(90deg, rgba(240, 47, 194, 1) 0%, rgba(96, 120, 218, 1) 100%);
 }
 
 .text-lighter {
@@ -21,8 +24,7 @@
 }
 
 .evening-title {
-  color: #ffffff;
-  background-color: #8a939b;
+background-color: #dedede;
   padding: 4px 10px;
 }
 
@@ -55,10 +57,7 @@
 }
 
 .info-item {
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 3px;
-  padding-bottom: 3px;
+  padding: 3px 0;
 }
 
 .icon-custom {
@@ -71,6 +70,19 @@
   width: 50%;
   background-color: rgba(0, 0, 0, .3);
   padding: 2em;
+}
+
+
+.title {
+  font-family: 'Crillee', sans-serif;
+}
+
+.modal-loader {
+  background-color: transparent;
+}
+
+.modal-loader-content {
+  background-color: rgba(0, 0, 0, .5);
 }
 
 

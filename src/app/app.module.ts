@@ -1,14 +1,15 @@
-import { BrowserModule } from '@angular/platform-browser';
+import {BrowserModule} from '@angular/platform-browser';
 import {LOCALE_ID, NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
-import {ApidataService} from "./_services/apidata.service";
-import {HttpClientModule} from "@angular/common/http";
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {ServiceWorkerModule} from '@angular/service-worker';
+import {environment} from '../environments/environment';
+import {ApidataService} from './_services/apidata.service';
+import {HttpClientModule} from '@angular/common/http';
 import localeDe from '@angular/common/locales/de';
-import {registerLocaleData} from "@angular/common";
+import {registerLocaleData} from '@angular/common';
+import {ModalModule} from 'ngx-bootstrap';
 
 registerLocaleData(localeDe);
 
@@ -19,8 +20,9 @@ registerLocaleData(localeDe);
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    HttpClientModule
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+    HttpClientModule,
+    ModalModule.forRoot()
   ],
   providers: [
     ApidataService,
@@ -28,4 +30,5 @@ registerLocaleData(localeDe);
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

@@ -2,10 +2,10 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {Statuscodes} from '../_helpers/statuscodes.enum';
-import {throwError} from "rxjs";
-import {catchError, map} from "rxjs/operators";
+import {throwError} from 'rxjs';
+import {catchError, map} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
-import {fromPromise} from "rxjs/internal-compatibility";
+import {fromPromise} from 'rxjs/internal-compatibility';
 
 
 @Injectable({
@@ -205,7 +205,7 @@ export class ApidataService {
       },
       err =>
         console.log(err)
-    ))
+    ));
 
   }
 
@@ -213,7 +213,7 @@ export class ApidataService {
 
     const ressource = `/events`;
 
-    environment
+    environment;
 
     return this.http.get(environment.apiUrl + ressource);
 
